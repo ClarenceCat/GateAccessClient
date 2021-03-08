@@ -1,0 +1,20 @@
+.hero-page {
+    height: 100vh;
+}
+
+.visitor-nav {
+    padding: 10px 100px;
+    background-color: #ffff;
+    border-bottom: 1px solid #e2e2e2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.visitor-nav-routes a {
+    text-decoration: none;
+    color: #000;
+    margin-left: 30px;
+    font-weight: 700;
+}
