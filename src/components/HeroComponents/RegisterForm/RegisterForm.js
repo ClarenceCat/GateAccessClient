@@ -1,7 +1,7 @@
 import React from 'react'
 import './RegisterForm.css'
 
-export default function RegisterForm({onChange, onSubmit, NewUser}) {
+export default function RegisterForm({onChange, onSubmit, NewUser, Error}) {
     return (
         <div className="signUpForm">
             <form onSubmit={onSubmit}>
@@ -9,6 +9,8 @@ export default function RegisterForm({onChange, onSubmit, NewUser}) {
                     <div className="signup-form-header">
                         <h1>Sign Up</h1>
                         <p>Make building access easier and more convenient</p>
+                        <hr />
+                        <div><p className='error-msg'>{Error}</p></div>
                     </div>
                     <div className="signup-form-inputs">
                         <label>
