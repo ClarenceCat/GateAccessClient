@@ -10,6 +10,8 @@ export default function LoginPage() {
 
     const [UserLogin, setUserLogin] = useState({email: '', password: ''})
 
+    const [Error, setError] = useState('')
+
     async function handleSubmit(e) {
         // prvent page from re-rendering
         e.preventDefault();
@@ -36,7 +38,7 @@ export default function LoginPage() {
                 })
 
             }catch(e){
-                console.log(e);
+                setError(e.response.data.error);
             }
         }
     }
