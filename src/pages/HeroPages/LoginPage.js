@@ -57,7 +57,7 @@ export default function LoginPage() {
 
     return (
         <div className='page'>
-            <LoginForm onChange={onChange} onSubmit={handleSubmit} UserLogin={UserLogin} />
+            <LoginForm onChange={onChange} onSubmit={handleSubmit} UserLogin={UserLogin} Error={Error}/>
         </div>
     )
 }

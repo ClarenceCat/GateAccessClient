@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route, Link, Redirect} from 'react-router-dom'
 import LoginPage from './LoginPage'
 import RegisterPage from './RegisterPage'
 import './styles/HeroPage.css'
@@ -24,6 +24,9 @@ export default function HeroPage() {
                     <Switch>
                         <Route exact path='/' component={LoginPage} />
                         <Route  path='/register' component={RegisterPage} />
+                        <Route path='*'>
+                            <Redirect to='/' />
+                        </Route>
                     </Switch>
                 </div>
             </div>

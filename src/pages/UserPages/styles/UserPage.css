@@ -1,0 +1,27 @@
+.user-nav {
+    background-color: #333;
+    padding: 10px 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.user-nav button{
+    width: 100px;
+    height: 35px;
+    background-color: #4717F6;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 5px;
+    border: 1px solid #e2e2e2; 
+}
+
+.user-nav button:hover {
+    background-color: #3a12c9;
+    cursor: pointer;
+}
+
+.property-select-page {
+    text-align: center;
+    padding-top: 30px;
+}

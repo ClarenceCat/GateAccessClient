@@ -1,12 +1,13 @@
 import React from 'react'
 import './LoginForm.css'
 
-export default function LoginForm({onChange, onSubmit, UserLogin }) {
+export default function LoginForm({onChange, onSubmit, UserLogin, Error }) {
     return (
         <form onSubmit={onSubmit} className='loginForm'>
             <div className="inner-form">
                 <h1>Login</h1>
                 <p>Login to see what's happening in your building!</p>
+                <div>{Error}</div>
                 <hr/>
 
                 <div className="form-inputs">

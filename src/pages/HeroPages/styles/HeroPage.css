@@ -3,18 +3,19 @@
 }
 
 .visitor-nav {
-    padding: 10px 100px;
-    background-color: #ffff;
+    padding: 0px 100px;
+    background-color: #333;
     border-bottom: 1px solid #e2e2e2;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #fff;
 }
 
 
 .visitor-nav-routes a {
     text-decoration: none;
-    color: #000;
+    color: #fff;
     margin-left: 30px;
     font-weight: 700;
 }
