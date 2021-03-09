@@ -1,0 +1,48 @@
+/* 
+    File: PropertyList.css
+    Description: This contains the styling for the PropertyList component
+*/
+
+.property-list {
+    width: 700px;
+    margin: 0 auto;
+}
+
+.list-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.list-title h1, .list-title button {
+    margin: 0;
+    padding: 0;
+}
+
+hr {
+    margin: 0;
+    padding: 0;
+}
+
+.add-prop-btn {
+    background-color: #4717F6;
+    color: #fff;
+    width: 35px;
+    height: 35px;
+    font-size: 24px;
+    border: none;
+}
+
+.add-prop-btn:hover {
+    cursor: pointer;
+    background-color: #3a12c9;
+}
+
+@media screen and (max-width: 800px){
+    .property-list{
+        width: 90%;
+        text-align: center;
+    }
+}

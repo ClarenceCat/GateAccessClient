@@ -1,0 +1,32 @@
+/* 
+    File: PropertyItem.css
+    Description: This file contains the styling for the
+        PropertyItem component
+*/
+
+.property-item {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.property-info h1,h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.property-info h1 {
+    font-size: 24px;
+}
+
+.property-info h3 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #b3b3b3;
+    margin-top: 5px;
+}
