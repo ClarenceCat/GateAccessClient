@@ -4,6 +4,7 @@
 
 import React, { useState, useEffect } from 'react'
 import PropertyList from '../../components/UserComponents/PropertyList/PropertyList'
+import Modal from '../../components/UserComponents/Modal/Modal'
 import { useAuth } from '../../context/AuthContext'
 import './styles/UserPage.css'
 
@@ -16,7 +17,11 @@ export default function PropertySelectPage() {
     // get current auth from the auth context
     const { Auth } = useAuth()
 
+    // used to store properties retrieved from the api
     const [Properties, setProperties] = useState(null)
+
+    // used for handling the add property modal
+    const [ModalOpen, setModalOpen] = useState(false)
 
     useEffect(() => {
         // function to retrieve property list from API
@@ -48,7 +53,7 @@ export default function PropertySelectPage() {
     })
 
     const addPropertyClick = () => {
-        console.log('click');
+        setModalOpen(true)
     }
 
     return (
@@ -56,7 +61,14 @@ export default function PropertySelectPage() {
             {Properties === null ? (
                 <h1>Properties are loading...</h1>
             ) : (
-                <PropertyList properties={Properties} addPropertyClick={addPropertyClick} />
+                <>
+                    <PropertyList properties={Properties} addPropertyClick={addPropertyClick} />
+                    {ModalOpen ? (
+                        <Modal setModalOpen={setModalOpen}>
+                            <h1>Hello World</h1>
+                        </Modal>
+                    ) : null}
+                </>
             )}
         </div>
     )
