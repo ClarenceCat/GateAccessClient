@@ -1,0 +1,68 @@
+/* 
+    File: PropertyForm.css
+    Description: Contains the styling for the PropertyForm Component
+*/
+
+.property-form {
+    padding-bottom: 40px;
+}
+
+.property-form-title h1{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.property-form-title p{
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.property-form-title hr{
+    width: 300px;
+    margin: 10px auto;
+}
+
+.property-form-content {
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.property-form-item {
+    margin-top: 20px;
+}
+
+.property-form-item input {
+    display: block;
+    margin: 10px auto;
+    width: 90%;
+    font-size: 18px;
+    border: 1px solid #333;
+    border-radius: 50px;
+    padding: 5px 10px;
+    margin-top: 5px;
+}
+
+.property-form-item label {
+    font-weight: 800;
+    color: #333;
+}
+
+.property-form-submit {
+    padding: 20px 20px;
+    text-align: right;
+}
+
+.property-form-submit button {
+    width: 100px;
+    height: 30px;
+    color: #e2e2e2;
+    background-color: #4717F6;
+    border: none;
+    border-radius: 10px;
+}
+
+.property-form-submit button:hover {
+    background-color: #3a12c9;
+    border: 1px solid #c5c5c5;
+}

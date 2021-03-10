@@ -1,3 +1,6 @@
+// File: Modal.js
+// Description: Modal component
+
 import React from 'react'
 import './Modal.css'
 

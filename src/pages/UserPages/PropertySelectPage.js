@@ -7,6 +7,7 @@ import PropertyList from '../../components/UserComponents/PropertyList/PropertyL
 import Modal from '../../components/UserComponents/Modal/Modal'
 import { useAuth } from '../../context/AuthContext'
 import './styles/UserPage.css'
+import PropertyForm from '../../components/UserComponents/PropertyForm/PropertyForm'
 
 const axios = require('axios')
 
@@ -50,7 +51,7 @@ export default function PropertySelectPage() {
 
         retrieveProperties();
 
-    })
+    }, [Auth.token])
 
     const addPropertyClick = () => {
         setModalOpen(true)
@@ -65,7 +66,7 @@ export default function PropertySelectPage() {
                     <PropertyList properties={Properties} addPropertyClick={addPropertyClick} />
                     {ModalOpen ? (
                         <Modal setModalOpen={setModalOpen}>
-                            <h1>Hello World</h1>
+                            <PropertyForm setModalOpen={setModalOpen} setProperties={setProperties} Auth={Auth} properties={Properties} />
                         </Modal>
                     ) : null}
                 </>

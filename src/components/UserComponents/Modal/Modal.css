@@ -16,7 +16,8 @@
     padding: 0px 30px;
     background-color: #fff;
     display: block;
-    max-width: 50%;
+    max-width: 500px;
+    min-width: 300px;
     max-height: 80%;
     margin: 15vh auto;
     box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
