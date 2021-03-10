@@ -10,13 +10,11 @@ import './styles/UserPage.css'
 
 export default function UserPage() {
 
-    const {setAuth} = useAuth()
+    const {logout} = useAuth()
 
     const onClick = () => {
-        setAuth({
-            token: '',
-            user: null
-        })
+        // call logout
+        logout()
     }
 
     return (

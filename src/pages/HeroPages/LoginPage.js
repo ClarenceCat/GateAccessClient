@@ -6,7 +6,7 @@ const axios = require('axios')
 
 export default function LoginPage() {
 
-    const {setAuth} = useAuth()
+    const { login } = useAuth()
 
     const [UserLogin, setUserLogin] = useState({email: '', password: ''})
 
@@ -32,10 +32,11 @@ export default function LoginPage() {
             try{
                 const res = await axios.post('http://localhost:5000/auth/signin', body, header)
 
-                setAuth({
-                    token: res.data.token,
-                    user: res.data.user
-                })
+                // setAuth({
+                //     token: res.data.token,
+                //     user: res.data.user
+                // })
+                login(res.data)
 
             }catch(e){
                 setError(e.response.data.error);
