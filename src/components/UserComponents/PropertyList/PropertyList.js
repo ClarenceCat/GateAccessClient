@@ -2,8 +2,9 @@
 // Description: This component generates a list of properties
 
 import React from 'react'
-import { Link, useRouteMatch } from 'react-router-dom'
+import { useRouteMatch, useHistory } from 'react-router-dom'
 import PropertyItem from '../PropertyItem/PropertyItem'
+import {useProperty} from '../../../context/PropertyContext'
 
 // import css
 import './PropertyList.css'
@@ -11,6 +12,19 @@ import './PropertyList.css'
 export default function PropertyList({properties, addPropertyClick}) {
 
     const { url } = useRouteMatch()
+    const history = useHistory()
+
+    // gets the dispatcher from the PropertyContext
+    const { propertyDispatch } = useProperty();
+
+    // onclick event that triggers when the user clicks on the propertyItem 
+    const propertyClick = (property) => {
+        // set the selected property to the selected property
+        propertyDispatch({ type: 'SELECT_PROPERTY', property: property })
+
+        // navigate to the property's specific page
+        history.push(`${url}/${property.id}`)
+    }
 
     return (
         <div className='property-list'>
@@ -24,9 +38,7 @@ export default function PropertyList({properties, addPropertyClick}) {
             <div className='property-item-list'>
                 {properties.map((property) => {
                     return (
-                        <Link style={{textDecoration: 'none'}} key={property.id} to={`${url}/${property.id}`}>
-                            <PropertyItem  property={property} />
-                        </Link>
+                            <PropertyItem key={property.id} property={property} onClick={propertyClick} /> 
                         )
                 })}
             </div>

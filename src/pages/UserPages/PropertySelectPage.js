@@ -53,6 +53,8 @@ export default function PropertySelectPage() {
 
     }, [Auth.token])
 
+    // onclick event that triggers when the user clicks on the + property button
+    // opens a modal for the user to create a new property
     const addPropertyClick = () => {
         setModalOpen(true)
     }

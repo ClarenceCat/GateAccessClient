@@ -3,21 +3,25 @@
 
 import React from 'react'
 import { Switch, Route, useRouteMatch } from 'react-router-dom'
+import PropertyContextProvider from '../../context/PropertyContext'
 import PropertyPage from './PropertyPage'
 import PropertySelectPage from './PropertySelectPage'
+
 
 
 export default function PropertiesPage() {
     const {path} = useRouteMatch()
 
     return (
-        <Switch>
-            <Route exact path={path} >
-                <PropertySelectPage />
-            </Route>
-            <Route path={`${path}/:property_id`}>
-                <PropertyPage />
-            </Route>
-        </Switch>
+        <PropertyContextProvider>
+            <Switch>
+                <Route exact path={path} >
+                    <PropertySelectPage />
+                </Route>
+                <Route path={`${path}/:property_id`}>
+                    <PropertyPage />
+                </Route>
+            </Switch>
+        </PropertyContextProvider>
     )
 }
