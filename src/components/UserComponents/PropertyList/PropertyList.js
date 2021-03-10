@@ -2,12 +2,16 @@
 // Description: This component generates a list of properties
 
 import React from 'react'
+import { Link, useRouteMatch } from 'react-router-dom'
 import PropertyItem from '../PropertyItem/PropertyItem'
 
 // import css
 import './PropertyList.css'
 
 export default function PropertyList({properties, addPropertyClick}) {
+
+    const { url } = useRouteMatch()
+
     return (
         <div className='property-list'>
             <div className='list-title'>
@@ -19,7 +23,11 @@ export default function PropertyList({properties, addPropertyClick}) {
             <hr />
             <div className='property-item-list'>
                 {properties.map((property) => {
-                    return <PropertyItem key={property.id} property={property} />
+                    return (
+                        <Link style={{textDecoration: 'none'}} key={property.id} to={`${url}/${property.id}`}>
+                            <PropertyItem  property={property} />
+                        </Link>
+                        )
                 })}
             </div>
         </div>
