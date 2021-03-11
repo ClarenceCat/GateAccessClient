@@ -3,9 +3,10 @@
 //      The nav is specific to a given user role within a property
 
 // import css for component
+import { Link } from 'react-router-dom'
 import './PropertySideNav.css'
 
-export default function PropertySideNav({property}) {
+export default function PropertySideNav({property, url, navType}) {
     return (
         <div className='property-side-nav'>
             <div className='property-side-nav-header'>
@@ -14,7 +15,13 @@ export default function PropertySideNav({property}) {
                 <p>{property.role}</p>
             </div>
             <div className='property-side-nav-links'>
-
+                {navType.map((navItem, index) => {
+                    return (
+                        <div className='property-side-nav-item'>
+                            <Link to={`${url}${navItem.route}`} key={index}>{navItem.name}</Link>
+                        </div>
+                        )
+                })}
             </div>
         </div>
     )

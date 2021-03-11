@@ -1,0 +1,17 @@
+
+
+.property-page-sidenav {
+    height: 100%;
+    width: 150px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    background-color: #333;
+    color: #fff;
+}
+
+.property-page-main {
+    margin-left: 160px;
+}
