@@ -19,7 +19,7 @@ export default function PropertySideNav({property, url, navType}) {
     }
 
     return (
-        <div className={SideBarToggled ? 'property-side-nav' : 'property-side-nav active'}>
+        <div className={SideBarToggled ? 'property-side-nav active' : 'property-side-nav' }>
             <div className='side-nav-header'>
                 <FaBars size={'35px'} onClick={() => toggleSideBar()} />
             </div>

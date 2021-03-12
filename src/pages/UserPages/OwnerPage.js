@@ -2,6 +2,7 @@ import React from 'react'
 import {Route, Redirect, Switch, useRouteMatch} from 'react-router-dom'
 import PropertySideNav from '../../components/PropertySideNav/PropertySideNav'
 import { OwnerNavList } from '../../NavLists/PropertyNavLists'
+import Dashboard from './DashboardPages/Dashboard'
 
 import './styles/PropertyPage.css'
 
@@ -19,7 +20,7 @@ export default function OwnerPage({property}) {
             <div className='property-page-main'>
                 <Switch>
                     <Route exact path={`${path}`} >
-                        <h1>Home</h1>
+                        <Dashboard property={property} />
                     </Route>
                     <Route  path={`${path}/Admins`} >
                         <h1>Admins</h1>
