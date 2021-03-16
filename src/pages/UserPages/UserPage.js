@@ -19,7 +19,7 @@ export default function UserPage() {
 
     return (
         <Router>
-            <div>
+            <div className='user-page'>
             {/* create top nav with logout */}
                 <div className='user-nav'>
                     <button onClick={onClick}>Logout</button>

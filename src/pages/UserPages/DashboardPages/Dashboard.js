@@ -30,7 +30,7 @@ export default function Dashboard({property}) {
 
         retrieveDetails()
 
-    }, [])
+    }, [Auth.token, property.id])
 
     return (
         <div>

@@ -1,9 +1,11 @@
+
 .user-nav {
     background-color: #333;
     padding: 15px 5%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
 }
 
 .user-nav button{
@@ -13,7 +15,7 @@
     color: #fff;
     font-weight: 700;
     border-radius: 5px;
-    border: 1px solid #e2e2e2; 
+    border: none;
 }
 
 .user-nav button:hover {

@@ -2,7 +2,9 @@ import React from 'react'
 import {Route, Redirect, Switch, useRouteMatch} from 'react-router-dom'
 import PropertySideNav from '../../components/PropertySideNav/PropertySideNav'
 import { OwnerNavList } from '../../NavLists/PropertyNavLists'
+import Admins from './DashboardPages/Admins'
 import Dashboard from './DashboardPages/Dashboard'
+import Residents from './DashboardPages/Residents'
 
 import './styles/PropertyPage.css'
 
@@ -23,10 +25,10 @@ export default function OwnerPage({property}) {
                         <Dashboard property={property} />
                     </Route>
                     <Route  path={`${path}/Admins`} >
-                        <h1>Admins</h1>
+                        <Admins property={property} />
                     </Route>
                     <Route  path={`${path}/Residents`} >
-                        <h1>Residents</h1>
+                        <Residents property={property} />
                     </Route>
                     <Route  path={`${path}/Tokens`} >
                         <h1>Tokens</h1>
