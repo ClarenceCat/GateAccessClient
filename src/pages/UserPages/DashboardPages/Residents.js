@@ -65,6 +65,8 @@ export default function Residents({ property }) {
         }
     ]
 
+    // Function: getResidents()
+    // Description: This function calls the api to retrieve a list of residents
     async function getResidents(res_email = null) {
         // construct config 
         const config = {
@@ -334,9 +336,9 @@ export default function Residents({ property }) {
             <div className='user-page-header'>
                 <h1>Residents Page</h1>
             </div>
-            <div className='resident-details'>
-                <div className='residents-header'>
-                    <div className='resident-search'>
+            <div className='user-details'>
+                <div className='user-header'>
+                    <div className='user-search'>
                         <h2>Residents</h2>
                         <SearchForm onChange={searchChange} onSubmit={searchSubmit} searchData={SearchResident.email} placeholder={'email@someMail.com'}/>
                     </div>

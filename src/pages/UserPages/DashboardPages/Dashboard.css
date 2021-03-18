@@ -1,11 +1,11 @@
 
-.resident-details {
+.user-details {
     width: 80%;
     min-width: 500px;
     margin: 0 auto;
 }
 
-.residents-header {
+.user-header {
     padding: 20px;
     display: flex;
     align-items: center;
@@ -44,12 +44,12 @@
     margin: 0;
 }
 
-.resident-search {
+.user-search {
     display: flex;
     align-items: center;
 }
 
-.resident-search h2 {
+.user-search h2 {
     margin-right: 30px;
 }
 
