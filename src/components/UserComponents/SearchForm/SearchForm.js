@@ -9,7 +9,7 @@ export default function SearchForm({placeholder, onSubmit, onChange, searchData}
     return (
         <form onSubmit={onSubmit} className='search-form'>
             <FaSearch color='5f5f5f' />
-            <input className='search-input' type='email' name='email' onChange={onChange} placeholder={placeholder} className='search-input' required value={searchData}/>
+            <input className='search-input' type='email' name='email' onChange={onChange} placeholder={placeholder} value={searchData} required />
             <button type='submit' className='search-btn'>Search</button>
         </form>
     )

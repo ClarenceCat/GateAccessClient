@@ -1,6 +1,6 @@
 
 .resident-details {
-    width: 60%;
+    width: 80%;
     min-width: 500px;
     margin: 0 auto;
 }
@@ -12,7 +12,7 @@
     justify-content: space-between;
 }
 
-.add-user-btn {
+.user-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,7 +23,7 @@
     height: 30px;
 }
 
-.add-user-btn:hover {
+.user-btn:hover {
     background-color: #3a12c9;
     cursor: pointer;
 }
@@ -53,3 +53,10 @@
     margin-right: 30px;
 }
 
+.user-buttons {
+    display: flex;
+}
+
+#res-refresh-btn {
+    margin-right: 10px;
+}
