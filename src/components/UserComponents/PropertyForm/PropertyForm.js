@@ -12,6 +12,11 @@ export default function PropertyForm({setModalOpen, setProperties, Auth, propert
         address: ''
     })
 
+    const [DeviceData, setDeviceData] = useState({
+        id: '',
+        password: ''
+    })
+
     async function onSubmit(e){
         e.preventDefault()
 
@@ -25,8 +30,14 @@ export default function PropertyForm({setModalOpen, setProperties, Auth, propert
 
         // set the body for the api call
         const body = {
-            name: PropertyData.name,
-            address: PropertyData.address
+            property: {
+                name: PropertyData.name,
+                address: PropertyData.address
+            },
+            device : {
+                id: DeviceData.id,
+                password: DeviceData.password
+            }
         }
 
         try{
@@ -60,6 +71,17 @@ export default function PropertyForm({setModalOpen, setProperties, Auth, propert
         });
     }
 
+    function changeDeviceData(e) {
+        const {value, name } = e.target;
+
+        setDeviceData(prev => {
+            return {
+                ...prev,
+                [name]: value
+            }
+        })
+    } 
+
     return (
         <form className='property-form' onSubmit={onSubmit}>
             <div className='property-form-title'>
@@ -75,6 +97,14 @@ export default function PropertyForm({setModalOpen, setProperties, Auth, propert
                 <div className='property-form-item'>
                     <label>Property Address: </label>
                     <input id='address' name='address' type='text' placeholder='123 address avenue' value={PropertyData.address} onChange={onChange} required />
+                </div>
+                <div className='property-form-item'>
+                    <label>Device ID: </label>
+                    <input id='id' name='id' type='text'  value={DeviceData.id} onChange={changeDeviceData} required />
+                </div>
+                <div className='property-form-item'>
+                    <label>Device Password: </label>
+                    <input id='password' name='password' type='password' value={DeviceData.password} onChange={changeDeviceData} required />
                 </div>
                 <div className='property-form-submit'>
                     <button type='submit'>Done</button> 
