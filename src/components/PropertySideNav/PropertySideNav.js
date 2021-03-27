@@ -21,7 +21,7 @@ export default function PropertySideNav({property, url, navType}) {
     return (
         <div className={SideBarToggled ? 'property-side-nav active' : 'property-side-nav' }>
             <div className='side-nav-header'>
-                <FaBars size={'35px'} onClick={() => toggleSideBar()} />
+                <FaBars size={'35px'} color='#000' onClick={() => toggleSideBar()} />
             </div>
             <div className='property-side-nav-title'>
                 <h3>{property.name}</h3>

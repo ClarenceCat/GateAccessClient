@@ -3,8 +3,9 @@
 //          for the user pages exists
 
 import React from 'react'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom'
 import {useAuth} from '../../context/AuthContext'
+import InvitationsPage from './InvitationsPage'
 import PropertiesPage from './PropertiesPage'
 import './styles/UserPage.css'
 
@@ -22,6 +23,8 @@ export default function UserPage() {
             <div className='user-page'>
             {/* create top nav with logout */}
                 <div className='user-nav'>
+                    <Link to='/properties'>Properties</Link>
+                    <Link to='/invitations'>Invitations</Link>
                     <button onClick={onClick}>Logout</button>
                 </div>
                 <Route exact path='/'>
@@ -29,6 +32,9 @@ export default function UserPage() {
                 </Route>
                 <Route path='/properties'>
                     <PropertiesPage />
+                </Route>
+                <Route path='/invitations'>
+                    <InvitationsPage />
                 </Route>
             </div>
         </Router>
