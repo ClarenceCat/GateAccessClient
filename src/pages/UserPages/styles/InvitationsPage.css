@@ -1,0 +1,53 @@
+.invitation-nav {
+    background-color: #f0f0f0;
+    align-items: center;
+    padding: 3vh 0 3vh 50px;
+}
+
+.invitation-nav a {
+    text-decoration: none;
+}
+
+.invitation-nav a span {
+    margin-right: 30px;
+    font-size: 20px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    padding-bottom: 2vh;
+}
+
+.invitation-nav a span:hover {
+    color: #4717F6;
+    border-bottom: 10px solid #4717F6;
+}
+
+.invitation-nav-selected {
+    color: #4717F6;
+    border-bottom: 10px solid #4717F6;
+}
+
+.invite-page-header {
+    margin: 0;
+    padding: 20px;
+    background-color: #f7f7f7;
+    height: 5vh;
+}
+
+.invite-content {
+    padding: 20px;
+}
+
+.invite-list{
+    width: 80%;
+    min-width: 550px;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.invite-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}

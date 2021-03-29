@@ -33,8 +33,11 @@ export default function UserPage() {
                 <Route path='/properties'>
                     <PropertiesPage />
                 </Route>
-                <Route path='/invitations'>
+                <Route  path='/invitations'>
                     <InvitationsPage />
+                </Route>
+                <Route path='*'>
+                    <Redirect to='/properties' />
                 </Route>
             </div>
         </Router>

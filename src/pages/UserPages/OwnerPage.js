@@ -5,6 +5,7 @@ import { OwnerNavList } from '../../NavLists/PropertyNavLists'
 import Admins from './DashboardPages/Admins'
 import Dashboard from './DashboardPages/Dashboard'
 import Residents from './DashboardPages/Residents'
+import Tokens from './DashboardPages/Tokens'
 
 import './styles/PropertyPage.css'
 
@@ -31,7 +32,7 @@ export default function OwnerPage({property}) {
                         <Residents property={property} />
                     </Route>
                     <Route  path={`${path}/Tokens`} >
-                        <h1>Tokens</h1>
+                        <Tokens />
                     </Route>
                     <Route  path={`${path}/Events`} >
                         <h1>Events</h1>
