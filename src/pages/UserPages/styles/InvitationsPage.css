@@ -34,6 +34,11 @@
     height: 5vh;
 }
 
+.invite-page-header h2 {
+    width: 80%;
+    margin: auto;
+}
+
 .invite-content {
     padding: 20px;
 }

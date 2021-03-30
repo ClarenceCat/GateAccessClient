@@ -1,0 +1,43 @@
+
+
+
+.invitation-form-submit button {
+    width: 100px;
+    height: 30px;
+    color: #e2e2e2;
+    background-color: #4717F6;
+    border: none;
+    border-radius: 10px;
+}
+
+.invitation-form-submit button:hover {
+    background-color: #3a12c9;
+    border: 1px solid #c5c5c5;
+    cursor: pointer;
+}
+
+.invitation-form-item{
+    margin-top: 20px;
+}
+
+.invitation-form-item input {
+    display: block;
+    margin: 10px auto;
+    width: 90%;
+    font-size: 18px;
+    border: 1px solid #333;
+    border-radius: 50px;
+    padding: 5px 10px;
+    margin-top: 5px;
+}
+
+.invitation-form-item label {
+    font-weight: 800;
+    color: #333;
+}
+
+.invitation-form-submit {
+    padding: 20px 20px;
+    text-align: right;
+}
+

@@ -32,7 +32,7 @@ export default function OwnerPage({property}) {
                         <Residents property={property} />
                     </Route>
                     <Route  path={`${path}/Tokens`} >
-                        <Tokens />
+                        <Tokens property={property} />
                     </Route>
                     <Route  path={`${path}/Events`} >
                         <h1>Events</h1>
