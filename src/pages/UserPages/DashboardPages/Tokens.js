@@ -4,7 +4,7 @@
 
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { MdAdd, MdRefresh } from 'react-icons/md'
+import { MdAdd, MdRefresh, MdCancel } from 'react-icons/md'
 import InvitationForm from '../../../components/UserComponents/InvitationForm/InvitationForm'
 import Modal from '../../../components/UserComponents/Modal/Modal'
 import Table from '../../../components/UserComponents/Table/Table'
@@ -73,6 +73,15 @@ export default function Tokens({property}) {
         }
     ]
 
+    const actions = [
+        {
+            icon: <MdCancel size='15px' color={'#fff'} />,
+            action: removeClick,
+            style: 'delete'
+        }
+    ]
+
+    // useeffect triggers when the component loads (when the page loads)
     useEffect(() => {
 
         const getTokens = async () => {
@@ -115,6 +124,10 @@ export default function Tokens({property}) {
     // resetClick
     // onclick event for the reset button
     const resetClick = async () => {
+        await fetchTokens();
+    }
+
+    const fetchTokens = async () => {
         // create header
         const config = {
             headers: {
@@ -205,6 +218,51 @@ export default function Tokens({property}) {
         }
     }
 
+    async function removeClick(selected_token) {
+        console.log(selected_token);
+
+        // check if the token is currently valid
+        // if not valid then will return because you cannot invalidate an invalid token
+        if(selected_token.valid === 'false'){
+            console.log('Token already not valid');
+            return;
+        }
+
+        // construct header to make api call
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                authorization: Auth.token,
+                property: property.id
+            }
+        }
+
+        // construct body
+        const body = {
+            token_id: selected_token.id
+        }
+
+        try{
+            // make API request
+            const res = await axios.patch(`${API_ACCESS}/tokens`, body, config);
+
+            // check for error
+            if(res.data.error){
+                console.log(res.data.error);
+            }
+            else if(res.data.token){
+                // if the update succeeded, call the api to refresh tokens list
+                fetchTokens();
+            }
+            else{
+                console.log('Something went wrong when trying to invalidate the token');
+            }
+        }
+        catch(e){
+            console.log(e);
+        }
+    }
+
     // addClick
     // onclick event for the add button
     const addClick = async () => {
@@ -226,7 +284,7 @@ export default function Tokens({property}) {
                         <button id='res-add-btn' className='user-btn' onClick={addClick} ><MdAdd size='20px' color='#fff' /></button>
                     </div>
                 </div>
-                <Table data={Tokens} columns={columns} /> 
+                <Table data={Tokens} columns={columns} actions={actions} /> 
             </div>
             {NewTokenModal ? (
                 <Modal setModalOpen={setNewTokenModal} >
