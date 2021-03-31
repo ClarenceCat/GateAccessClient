@@ -24,7 +24,7 @@ export default function UserPage() {
             {/* create top nav with logout */}
                 <div className='user-nav'>
                     <Link to='/properties'>Properties</Link>
-                    <Link to='/invitations'>Invitations</Link>
+                    <Link to='/invitations'>My Invitations</Link>
                     <button onClick={onClick}>Logout</button>
                 </div>
                 <Route exact path='/'>

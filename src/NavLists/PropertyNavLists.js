@@ -28,3 +28,14 @@ export const OwnerNavList = [
         route: '/Devices'
     }
 ]
+
+export const ResidentNavList = [
+    {
+        name: 'Entry Log',
+        route: '/Entries'
+    },
+    {
+        name: 'Invitations',
+        route: '/Invitations'
+    }
+]
