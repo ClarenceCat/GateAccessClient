@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import { useAuth } from '../../../context/AuthContext'
+import { API_ACCESS } from '../../../config/config'
 const axios = require('axios')
 
 export default function Dashboard({property}) {
@@ -19,7 +20,7 @@ export default function Dashboard({property}) {
 
             try{
                 // call api to retrieve info
-                const response = await axios.get('http://localhost:5000/property', config)
+                const response = await axios.get(`${API_ACCESS}/property`, config)
                 console.log(response.data);
 
             }catch(e){

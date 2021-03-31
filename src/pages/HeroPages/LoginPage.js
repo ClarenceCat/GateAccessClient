@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import LoginForm from '../../components/HeroComponents/LoginForm/LoginForm'
 import {useAuth} from '../../context/AuthContext'
+import { API_ACCESS } from '../../config/config'
 
 const axios = require('axios')
 
@@ -30,13 +31,19 @@ export default function LoginPage() {
             }
 
             try{
-                const res = await axios.post('http://localhost:5000/auth/signin', body, header)
+                const res = await axios.post(`${API_ACCESS}/auth/signin`, body, header)
 
                 // setAuth({
                 //     token: res.data.token,
                 //     user: res.data.user
                 // })
-                login(res.data)
+                if(!res.data.error)
+                {
+                    login(res.data)
+                }
+                else{
+                    console.log(res.data.error);
+                }
 
             }catch(e){
                 setError(e.response.data.error);

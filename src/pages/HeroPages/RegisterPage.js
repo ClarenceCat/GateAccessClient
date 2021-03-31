@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import RegisterForm from '../../components/HeroComponents/RegisterForm/RegisterForm'
 import {useAuth} from '../../context/AuthContext'
+import { API_ACCESS } from '../../config/config'
  
 const axios = require('axios')
 
@@ -48,7 +49,7 @@ export default function RegisterPage() {
 
         try{
             // send to api to create user
-            const res = await axios.post('http://localhost:5000/auth/signup', body, header)
+            const res = await axios.post(`${API_ACCESS}/auth/signup`, body, header)
             
             setAuth({
                 token: res.data.token,

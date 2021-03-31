@@ -8,6 +8,7 @@ import Modal from '../../components/UserComponents/Modal/Modal'
 import { useAuth } from '../../context/AuthContext'
 import './styles/UserPage.css'
 import PropertyForm from '../../components/UserComponents/PropertyForm/PropertyForm'
+import { API_ACCESS } from '../../config/config'
 
 const axios = require('axios')
 
@@ -40,7 +41,7 @@ export default function PropertySelectPage() {
             config.headers['authorization'] = Auth.token;
 
             try {
-                const res = await axios.get('http://localhost:5000/user/properties', config)
+                const res = await axios.get(`${API_ACCESS}/user/properties`, config)
                 
                 // set the properties using the response from the api 
                 setProperties(res.data.properties)
