@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import LoginForm from '../../components/HeroComponents/LoginForm/LoginForm'
 import {useAuth} from '../../context/AuthContext'
 import { API_ACCESS } from '../../config/config'
+import { ToastContainer, toast } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css"
 
 const axios = require('axios')
 
@@ -42,11 +44,28 @@ export default function LoginPage() {
                     login(res.data)
                 }
                 else{
-                    console.log(res.data.error);
+                    toast.error(res.data.error, {
+                        position: 'top-right',
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: false,
+                        progress: undefined,
+                    })
                 }
 
             }catch(e){
                 setError(e.response.data.error);
+                toast.error(e.response.data.error, {
+                    position: 'top-right',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: false,
+                    progress: undefined,
+                })
             }
         }
     }
@@ -65,6 +84,7 @@ export default function LoginPage() {
 
     return (
         <div className='page'>
+            <ToastContainer />
             <LoginForm onChange={onChange} onSubmit={handleSubmit} UserLogin={UserLogin} Error={Error}/>
         </div>
     )

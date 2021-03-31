@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import RegisterForm from '../../components/HeroComponents/RegisterForm/RegisterForm'
 import {useAuth} from '../../context/AuthContext'
 import { API_ACCESS } from '../../config/config'
+import { ToastContainer, toast } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css"
  
 const axios = require('axios')
 
@@ -58,11 +60,21 @@ export default function RegisterPage() {
 
         }catch(e){
             setError(e.response.data.error)
+            toast.error(e.response.data.error, {
+                position: 'top-right',
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+            })
         }
     }
 
     return (
         <div>
+            <ToastContainer />
             <RegisterForm NewUser={RegisterInfo} onChange={onChange} onSubmit={onSubmit} Error={Error} />
         </div>
     )
