@@ -219,8 +219,6 @@ export default function Tokens({property}) {
     }
 
     async function removeClick(selected_token) {
-        console.log(selected_token);
-
         // check if the token is currently valid
         // if not valid then will return because you cannot invalidate an invalid token
         if(selected_token.valid === 'false'){

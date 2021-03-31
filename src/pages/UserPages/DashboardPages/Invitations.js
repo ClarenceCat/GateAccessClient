@@ -209,8 +209,47 @@ export default function Invitations({property}) {
         }
     }
 
-    async function removeClick(selected_token) {
-        console.log(selected_token);
+    async function removeClick(selected_invite) {
+                // check if the token is currently valid
+        // if not valid then will return because you cannot invalidate an invalid token
+        if(selected_invite.valid === 'false'){
+            console.log('Token already not valid');
+            return;
+        }
+
+        // construct header to make api call
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                authorization: Auth.token,
+                property: property.id
+            }
+        }
+
+        // construct body
+        const body = {
+            token_id: selected_invite.id
+        }
+
+        try{
+            // make API request
+            const res = await axios.patch(`${API_ACCESS}/user/property/invitations`, body, config);
+
+            // check for error
+            if(res.data.error){
+                console.log(res.data.error);
+            }
+            else if(res.data.invite){
+                // if the update succeeded, call the api to refresh tokens list
+                fetchTokens();
+            }
+            else{
+                console.log('Something went wrong when trying to invalidate the token');
+            }
+        }
+        catch(e){
+            console.log(e);
+        }
     }
 
     // addClick
