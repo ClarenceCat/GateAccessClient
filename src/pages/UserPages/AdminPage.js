@@ -1,10 +1,46 @@
 import React from 'react'
+import {Route, Redirect, Switch, useRouteMatch} from 'react-router-dom'
+import PropertySideNav from '../../components/PropertySideNav/PropertySideNav'
+import { AdminNavList } from '../../NavLists/PropertyNavLists'
+import Dashboard from './DashboardPages/Dashboard'
+import Residents from './DashboardPages/Residents'
+import Tokens from './DashboardPages/Tokens'
+
+import './styles/PropertyPage.css'
 
 export default function AdminPage({property}) {
+
+    const { path, url } = useRouteMatch()
+
     return (
         <div>
-            <h1>Admin Page</h1>
-            <h1>{property.name}</h1>
+            {/* Create Navigation side menu */}
+            <div className='property-page-sidenav'>
+                <PropertySideNav property={property} url={url} navType={AdminNavList} />
+            </div>
+            {/* set up routes */}
+            <div className='property-page-main'>
+                <Switch>
+                    <Route exact path={`${path}`} >
+                        <Dashboard property={property} />
+                    </Route>
+                    <Route  path={`${path}/Residents`} >
+                        <Residents property={property} />
+                    </Route>
+                    <Route  path={`${path}/Tokens`} >
+                        <Tokens property={property} />
+                    </Route>
+                    <Route  path={`${path}/Events`} >
+                        <h1>Events</h1>
+                    </Route>
+                    <Route  path={`${path}/Devices`} >
+                        <h1>Devices</h1>
+                    </Route>
+                    <Route path='*'>
+                        <Redirect to={`${path}`} />
+                    </Route>
+                </Switch>
+            </div>
         </div>
     )
 }

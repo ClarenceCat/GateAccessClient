@@ -29,6 +29,29 @@ export const OwnerNavList = [
     }
 ]
 
+export const AdminNavList = [
+    {
+        name: 'Dashboard',
+        route: ''
+    },
+    {
+        name: 'Residents',
+        route: '/Residents'
+    },
+    {
+        name: 'Tokens',
+        route: '/Tokens'
+    },
+    {
+        name: 'Event Log',
+        route: '/Events'
+    },
+    {
+        name: 'Devices',
+        route: '/Devices'
+    }
+]
+
 export const ResidentNavList = [
     {
         name: 'Entry Log',
