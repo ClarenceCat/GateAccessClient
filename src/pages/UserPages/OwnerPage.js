@@ -5,6 +5,7 @@ import { OwnerNavList } from '../../NavLists/PropertyNavLists'
 import Admins from './DashboardPages/Admins'
 import Dashboard from './DashboardPages/Dashboard'
 import Devices from './DashboardPages/Devices'
+import PropertyLog from './DashboardPages/PropertyLog'
 import Residents from './DashboardPages/Residents'
 import Tokens from './DashboardPages/Tokens'
 
@@ -36,7 +37,7 @@ export default function OwnerPage({property}) {
                         <Tokens property={property} />
                     </Route>
                     <Route  path={`${path}/Events`} >
-                        <h1>Events</h1>
+                        <PropertyLog property={property} />
                     </Route>
                     <Route  path={`${path}/Devices`} >
                         <Devices property={property} />

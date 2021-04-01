@@ -3,6 +3,7 @@ import { Route, Redirect, Switch, useRouteMatch } from 'react-router-dom'
 import PropertySideNav from '../../components/PropertySideNav/PropertySideNav'
 import { ResidentNavList } from '../../NavLists/PropertyNavLists'
 import Invitations from './DashboardPages/Invitations'
+import ResidentLog from './DashboardPages/ResidentLog'
 
 export default function ResidentPage({property}) {
 
@@ -19,7 +20,7 @@ export default function ResidentPage({property}) {
                     <Redirect to={`${path}/entries`} />
                 </Route>
                 <Route path={`${path}/Entries`}>
-                    <h1>Entries</h1>
+                    <ResidentLog property={property} />
                 </Route>
                 <Route path={`${path}/Invitations`}>
                     <Invitations property={property} />
