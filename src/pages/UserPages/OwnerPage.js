@@ -4,6 +4,7 @@ import PropertySideNav from '../../components/PropertySideNav/PropertySideNav'
 import { OwnerNavList } from '../../NavLists/PropertyNavLists'
 import Admins from './DashboardPages/Admins'
 import Dashboard from './DashboardPages/Dashboard'
+import Devices from './DashboardPages/Devices'
 import Residents from './DashboardPages/Residents'
 import Tokens from './DashboardPages/Tokens'
 
@@ -38,7 +39,7 @@ export default function OwnerPage({property}) {
                         <h1>Events</h1>
                     </Route>
                     <Route  path={`${path}/Devices`} >
-                        <h1>Devices</h1>
+                        <Devices property={property} />
                     </Route>
                     <Route path='*'>
                         <Redirect to={`${path}`} />
