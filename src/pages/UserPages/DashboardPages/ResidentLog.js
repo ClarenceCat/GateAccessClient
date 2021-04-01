@@ -1,11 +1,48 @@
 // File: ResidentLog.js
 // Description: This page displays the entry log for a resident of a property
 
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { MdRefresh } from 'react-icons/md'
 import Table from '../../../components/UserComponents/Table/Table'
+import { API_ACCESS } from '../../../config/config';
+import { useAuth } from '../../../context/AuthContext'
 
 export default function ResidentLog({property}) {
+
+    const { Auth } = useAuth();
+    const [Logs, setLogs] = useState([])
+
+    // useeffect runs only on page render
+    useEffect(() => {
+        // function to retrieve all eventlog events from api
+        async function retrieveLogs () {
+            // create header
+            const config = {
+                headers: {
+                    'Content-Type' : 'application/json',
+                    authorization: Auth.token,
+                    property: property.id
+                }
+            }
+
+            try {
+                // make call to api to retrieve the 
+                const ret_logs = await axios.get(`${API_ACCESS}/user/entrylog`, config);
+
+                if(ret_logs.data.entrylog){
+                    setLogs(ret_logs.data.entrylog);
+                }
+
+            }
+            catch(e){
+                console.log(e);
+            }
+        }
+
+        retrieveLogs();
+
+    }, [Auth.token, property.id])
 
     const columns = [
         {
@@ -29,8 +66,28 @@ export default function ResidentLog({property}) {
         }
     ]
 
-    function resetClick() {
-        console.log("click");
+    async function resetClick() {
+        // create header
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                authorization: Auth.token,
+                property: property.id
+            }
+        }
+
+        try {
+            // make call to api to retrieve the 
+            const ret_logs = await axios.get(`${API_ACCESS}/user/entrylog`, config);
+
+            if(ret_logs.data.entrylog){
+                setLogs(ret_logs.data.entrylog);
+            }
+
+        }
+        catch(e){
+            console.log(e);
+        }
     }
 
     return (
@@ -47,7 +104,7 @@ export default function ResidentLog({property}) {
                         <button id='res-refresh-btn' className='user-btn' onClick={resetClick}><MdRefresh color={'#fff'} size='20px' /></button>
                     </div>
                 </div>
-                <Table data={[]} columns={columns} /> 
+                <Table data={Logs} columns={columns} /> 
             </div>
         </div>
     )
