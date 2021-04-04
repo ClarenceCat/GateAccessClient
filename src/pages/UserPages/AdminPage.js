@@ -24,7 +24,7 @@ export default function AdminPage({property}) {
             <div className='property-page-main'>
                 <Switch>
                     <Route exact path={`${path}`} >
-                        <Dashboard property={property} />
+                        <Redirect to={`${path}/Tokens`} />
                     </Route>
                     <Route  path={`${path}/Residents`} >
                         <Residents property={property} />

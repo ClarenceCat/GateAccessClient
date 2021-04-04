@@ -4,10 +4,6 @@
 
 export const OwnerNavList = [
     {
-        name: 'Dashboard',
-        route: ''
-    },
-    {
         name: 'Admins',
         route: '/Admins'
     },
@@ -30,10 +26,6 @@ export const OwnerNavList = [
 ]
 
 export const AdminNavList = [
-    {
-        name: 'Dashboard',
-        route: ''
-    },
     {
         name: 'Residents',
         route: '/Residents'
