@@ -5,9 +5,11 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { MdAdd, MdRefresh, MdCancel } from 'react-icons/md'
+import { ToastContainer, toast } from 'react-toastify'
 import InvitationForm from '../../../components/UserComponents/InvitationForm/InvitationForm'
 import Modal from '../../../components/UserComponents/Modal/Modal'
 import Table from '../../../components/UserComponents/Table/Table'
+import TokenSearchForm from '../../../components/UserComponents/TokenSearchForm/TokenSearchForm'
 import { API_ACCESS } from '../../../config/config'
 import { useAuth } from '../../../context/AuthContext'
 
@@ -22,6 +24,11 @@ export default function Tokens({property}) {
     const [NewInvite, setNewInvite] = useState({
         email: '',
         expiration: new Date().toISOString().slice(0, 10)
+    })
+
+    const [SearchData, setSearchData] = useState({
+        sender: '',
+        recipient: ''
     })
 
     // define columns to display in table
@@ -267,6 +274,93 @@ export default function Tokens({property}) {
         setNewTokenModal(true);
     }
 
+    // input change handler for the search form
+    async function searchChange (e) {
+        // get values to change
+        const { name, value } = e.target;
+
+        setSearchData(prev => {
+            return {
+                ...prev,
+                [name]: value
+            }
+        })
+    }
+
+    async function searchSubmit(e) {
+        e.preventDefault()
+
+        // construct config
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                authorization: Auth.token,
+                property: property.id
+            }
+        }
+
+        const body = {
+            sender: SearchData.sender,
+            recipient: SearchData.recipient
+            }
+
+        // check if the user has filled in any fields
+        if(SearchData.sender === '' && SearchData.recipient === ''){
+            toast.warn('Search is Empty', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                progress: undefined
+                } )
+            return;
+        }
+
+        // try making a request to the api to search for tokens
+        try{
+            // make api call to axios
+            const res = await axios.post(`${API_ACCESS}/tokens/search`, body, config);
+
+            // check for error
+            if(res.data.error){
+                toast.error(res.data.error, {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    progress: undefined
+                } )
+            }
+            else if (res.data.tokens){
+                // if api responds with tokens then set the Tokens state to the returned tokens
+                setTokens(res.data.tokens)
+            }
+            else{
+                toast.warn('Error searching for tokens', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    progress: undefined
+                } )
+
+            }
+
+        }
+        catch(e){
+            console.log(e);
+        }
+
+        // reset the Search Data
+        setSearchData({
+            sender: '',
+            recipient: ''
+        })
+    }
+
     return (
         <div>
             <div className='user-page-header'>
@@ -274,7 +368,7 @@ export default function Tokens({property}) {
             </div>
             <div className='user-details'>
                 <div className='user-header'>
-                    <div className='user-search'>
+                    <div className='token-search'>
                         <h2>Building Invitations</h2>
                     </div>
                     <div className='user-buttons'>
@@ -282,6 +376,7 @@ export default function Tokens({property}) {
                         <button id='res-add-btn' className='user-btn' onClick={addClick} ><MdAdd size='20px' color='#fff' /></button>
                     </div>
                 </div>
+                <TokenSearchForm onChange={searchChange} onSubmit={searchSubmit} searchData={SearchData} />
                 <Table data={Tokens} columns={columns} actions={actions} /> 
             </div>
             {NewTokenModal ? (
@@ -289,6 +384,8 @@ export default function Tokens({property}) {
                     <InvitationForm onChange={onFormChange} setNewInvite={setNewInvite} newInvite={NewInvite} onSubmit={onFormSubmit} />
                 </Modal>
                 ) : null}
+
+                <ToastContainer />
         </div>
     )
 }

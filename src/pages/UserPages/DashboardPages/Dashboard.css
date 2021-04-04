@@ -49,6 +49,10 @@
     align-items: center;
 }
 
+.token-search {
+    text-align: left;
+}
+
 .user-search h2 {
     margin-right: 30px;
 }
