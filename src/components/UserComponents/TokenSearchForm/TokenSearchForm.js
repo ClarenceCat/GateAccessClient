@@ -8,7 +8,7 @@ export default function TokenSearchForm({onSubmit, onChange, searchData}) {
         <form onSubmit={onSubmit} className='token-search-form'>
             <FaSearch color='5f5f5f' />
             <div className="token-search-field">
-                <label className="token-form-label">Render: </label>
+                <label className="token-form-label">Sender: </label>
                 <input className='search-input' type='email' name='sender' onChange={onChange} placeholder={'sender@sender.com'} value={searchData.sender} />
             </div>
             <div className="token-search-field">

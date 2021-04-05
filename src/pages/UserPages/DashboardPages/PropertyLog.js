@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { MdRefresh } from 'react-icons/md'
+import { ToastContainer, toast } from 'react-toastify';
+import SearchLogsForm from '../../../components/UserComponents/SearchLogsForm/SearchLogsForm';
 import Table from '../../../components/UserComponents/Table/Table'
 import { API_ACCESS } from '../../../config/config';
 import { useAuth } from '../../../context/AuthContext'
@@ -9,6 +11,9 @@ export default function PropertyLog({property}) {
 
     const { Auth } = useAuth();
     const [Logs, setLogs] = useState([])
+    const [SearchLog, setSearchLog] = useState({
+        actor: ''
+    })
 
     useEffect(() => {
         // function to retrieve all eventlog events from api
@@ -94,6 +99,71 @@ export default function PropertyLog({property}) {
         }
     }
 
+    async function searchFormSubmit(e) {
+        e.preventDefault();
+
+        // create header
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json',
+                authorization: Auth.token,
+                property: property.id
+            }
+        }
+
+        const body = {
+            actor: SearchLog.actor
+        }
+
+        try{
+            // make api call 
+            const res = await axios.post(`${API_ACCESS}/property/entrylog/search`, body, config)
+
+            if(res.data.error){
+                toast.error(res.data.error, {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    progress: undefined
+                })
+            }
+            else if(res.data.logs){
+                setLogs(res.data.logs);
+            }
+            else{
+                toast.error('Error retrieving logs', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    progress: undefined
+                })
+            }
+        }
+        catch(e){
+            console.log(e);
+        }
+
+        setSearchLog({
+            actor: ''
+        })
+    }
+
+    function searchFormChange(e) {
+        // get the name of the the input field and value of the input field
+        const { name, value } = e.target;
+
+        setSearchLog(prev => {
+            return {
+                ...prev,
+                [name] : value
+            }
+        })
+    }
+
     return (
         <div>
             <div className='user-page-header'>
@@ -108,8 +178,10 @@ export default function PropertyLog({property}) {
                         <button id='res-refresh-btn' className='user-btn' onClick={resetClick}><MdRefresh color={'#fff'} size='20px' /></button>
                     </div>
                 </div>
+                <SearchLogsForm onSubmit={searchFormSubmit} onChange={searchFormChange} searchData={SearchLog} />
                 <Table data={Logs} columns={columns} /> 
             </div>
+            <ToastContainer />
         </div>
     )
 }
