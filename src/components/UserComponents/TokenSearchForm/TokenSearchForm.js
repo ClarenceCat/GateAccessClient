@@ -6,7 +6,9 @@ import { FaSearch } from 'react-icons/fa'
 export default function TokenSearchForm({onSubmit, onChange, searchData}) {
     return (
         <form onSubmit={onSubmit} className='token-search-form'>
+        <div className="search-icon">
             <FaSearch color='5f5f5f' />
+        </div>
             <div className="token-search-field">
                 <label className="token-form-label">Sender: </label>
                 <input className='search-input' type='email' name='sender' onChange={onChange} placeholder={'sender@sender.com'} value={searchData.sender} />

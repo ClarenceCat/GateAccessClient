@@ -7,7 +7,7 @@
     background-color: #333;
     color: #fff;
     padding: 30px 20px;
-    left: -300px;
+    left: -100%;
     transition: 800ms;
 }
 
@@ -66,7 +66,20 @@
 .side-nav-header {
     margin-bottom: 20px;
     position: absolute;
-    right: -50px;
-    top: 10px;
+    left: 15px;
+    top: 15px;
+}
+
+.side-nav-header:hover {
+    cursor: pointer;
+}
+
+.close-nav-head {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.close-nav-head:hover {
+    cursor: pointer;
 }
 

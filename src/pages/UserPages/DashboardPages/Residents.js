@@ -8,7 +8,6 @@ import { useAuth } from '../../../context/AuthContext'
 import './Dashboard.css'
 import { MdDelete, MdAdd, MdRefresh } from 'react-icons/md' 
 import axios from 'axios';
-import SearchForm from '../../../components/UserComponents/SearchForm/SearchForm';
 import Modal from '../../../components/UserComponents/Modal/Modal'
 import AddUserForm from '../../../components/UserComponents/AddUserForm/AddUserForm';
 import {API_ACCESS} from '../../../config/config'
@@ -22,9 +21,7 @@ export default function Residents({ property }) {
     const [NewResident, setNewResident] = useState({
         email: ''
     })
-    const [SearchResident, setSearchResident] = useState({
-        email: ''
-    })
+
     const [ModalOpen, setModalOpen] = useState(false)
 
     const columns = [
@@ -188,46 +185,7 @@ export default function Residents({ property }) {
         }
     }
 
-    // onClick event used for the search form
-    async function searchSubmit(e) {
-        e.preventDefault()
 
-        // call the getResidents function to retrieve list of residents from the api with matching email
-        const res_list = await getResidents(SearchResident.email);
-
-        if(res_list === null)
-        {
-            setSearchResident({
-                email: ''
-            })
-            return;
-        }
-        // check for error
-        if(res_list.data.error){
-            console.log(res_list.data.error);
-        }
-        else if(res_list.data.residents){
-            // add set the current user list to the response list
-            setResidents(res_list.data.residents)
-        }
-        else{
-            console.log('Something unexpected has happened');
-        }
-
-        // reset search box
-        setSearchResident({
-            email: ''
-        })
-
-    }
-
-    function searchChange(e) {
-        const {name, value} = e.target;
-
-        setSearchResident({
-            [name] : value
-        })
-    }
 
     // AddUserChange - updates new user as form updates
     function AddUserChange(e){
@@ -340,7 +298,6 @@ export default function Residents({ property }) {
                 <div className='user-header'>
                     <div className='user-search'>
                         <h2>Residents</h2>
-                        <SearchForm onChange={searchChange} onSubmit={searchSubmit} searchData={SearchResident.email} placeholder={'email@someMail.com'}/>
                     </div>
                     <div className='user-buttons'>
                         <button id='res-refresh-btn' className='user-btn' onClick={resetClick}><MdRefresh color={'#fff'} size='20px' /></button>

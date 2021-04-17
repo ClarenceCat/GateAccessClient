@@ -4,6 +4,10 @@
     text-align: left;
     border-collapse: collapse;
 }
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
 
 .table-head {
     font-weight: 700;
@@ -41,4 +45,15 @@ td {
 .delete:hover {
     background-color: rgb(121, 0, 0);
     cursor: pointer;
+}
+
+@media screen and (max-width: 450px) {
+    .table {
+        max-width: 100%;
+        table-layout: auto;
+        width: 100%;
+    }
+    td{
+        padding: 5px 5px;
+    }
 }

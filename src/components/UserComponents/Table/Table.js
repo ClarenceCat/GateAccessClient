@@ -7,21 +7,23 @@ import './Table.css'
 export default function Table({columns, data, actions}) {
 
     return (
-        <table className='table'>
-            <thead className='table-head'>
-                <tr>
-                    {/* Loop through the columns and set up the headers */}
-                    {columns.map((col, index) => {
-                        return <td key={index} style={col.style? col.style : null}>{col.headerName}</td>
+        <div className="table-wrapper">
+            <table className='table'>
+                <thead className='table-head'>
+                    <tr>
+                        {/* Loop through the columns and set up the headers */}
+                        {columns.map((col, index) => {
+                            return <td key={index} style={col.style? col.style : null}>{col.headerName}</td>
+                        })}
+                        { actions ? <td className='actions'></td> : null }
+                    </tr>
+                </thead>
+                <tbody className='table-body'>
+                    {data.map((row, index) => {
+                        return <TableItem key={index} row={row} columns={columns} actions={actions} />
                     })}
-                    { actions ? <td className='actions'></td> : null }
-                </tr>
-            </thead>
-            <tbody className='table-body'>
-                {data.map((row, index) => {
-                    return <TableItem key={index} row={row} columns={columns} actions={actions} />
-                })}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     )
 }

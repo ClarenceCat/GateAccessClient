@@ -321,7 +321,7 @@ export default function Admins({ property }) {
                     
     
                 }catch(e) {
-                    console.log(e);
+                    console.log(e.response.data.error);
                 }
                 // set the AdminsLodaing value to false
                 setAdminsLoading(false)
