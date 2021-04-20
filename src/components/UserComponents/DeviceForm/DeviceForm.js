@@ -8,7 +8,7 @@ export default function DeviceForm({onSubmit, onChange, NewDevice}) {
     return (
         <form className="device-form" onSubmit={onSubmit}>
             <div className="device-form-head">
-                <h2>New Invitation</h2>
+                <h2>New Device</h2>
             </div>
             <div className='device-form-fields'>
                 <div className='device-form-item'>
